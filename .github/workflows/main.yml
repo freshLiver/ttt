@@ -1,0 +1,19 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  check-code-format:
+    runs-on: ubuntu-22.04
+    outputs:
+      has_code_related_changes: ${{ steps.set_has_code_related_changes.outputs.has_code_related_changes }}
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+      - name: Install dependencies
+        run: |
+            sudo apt-get update -q -y
+            sudo apt-get install -q -y clang-format
+      - name: Check code formatting
+        run: |
+            ./scripts/check-format.sh
