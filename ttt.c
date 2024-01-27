@@ -18,8 +18,9 @@ static int step_backward[2] = {-1, -2};
 static int *move_record = NULL;
 static int move_count = 0;
 
-void record_move(int move)
-{
+   // test github action    
+
+void record_move(int move) {
     if (move_count == 0) {
         // minimum of 5 moves is required to determine the winner
         move_record = malloc(sizeof(int) * (5));
